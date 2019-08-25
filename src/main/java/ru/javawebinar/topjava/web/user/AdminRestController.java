@@ -18,10 +18,11 @@ public class AdminRestController extends AbstractUserController {
 
     public static final String REST_URL = "/rest/admin/users";
 
+    @Override
     @GetMapping
     public List<User> getAll() {
         log.info("getAll");
-        return service.getAll();
+        return super.getAll();
     }
 
     @Override
@@ -32,13 +33,11 @@ public class AdminRestController extends AbstractUserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createWithLocation(@RequestBody User user) {
-        log.info("create {}", user);
-        checkNew(user);
-                User created = service.create(user);
-                URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                                .path(REST_URL + "/{id}")
-                                .buildAndExpand(created.getId()).toUri();
-                return ResponseEntity.created(uriOfNewResource).body(created);
+        User created = super.create(user);
+        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(REST_URL + "/{id}")
+                .buildAndExpand(created.getId()).toUri();
+        return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
     @Override
@@ -51,7 +50,7 @@ public class AdminRestController extends AbstractUserController {
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-   public void update(@RequestBody User user, @PathVariable int id) {
+    public void update(@RequestBody User user, @PathVariable int id) {
         super.update(user, id);
     }
 

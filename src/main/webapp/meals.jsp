@@ -5,13 +5,13 @@
 <%--<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>--%>
 <html>
 <head>
-    <title>Meal</title>
+    <title>Calories management</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <section>
     <h3><a href="index.html">Home</a></h3>
-    <h2>Meals</h2>
+    <h3>Meals</h3>
     <form method="get" action="meals">
         <input type="hidden" name="action" value="filter">
         <dl>

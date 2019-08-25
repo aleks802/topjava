@@ -38,7 +38,7 @@ class InMemoryAdminRestControllerSpringTest {
     }
 
     @Test
-    void testDeleteNotFound() throws Exception {
+    void deleteNotFound() throws Exception {
         assertThrows(NotFoundException.class, () ->
                 controller.delete(10));
     }
